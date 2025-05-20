@@ -1,0 +1,57 @@
+/*h1, p, b, img*/
+/*
+Colors yeis
+ffd23f Yellow
+3bceac Light blue
+0ead69 Green
+ee4266 Pink
+540d6e Purple
+
+*/
+// <weight>: Use a value from 400 to 900
+// <uniquifier>: Use a unique and descriptive class name
+
+.orbitron-<uniquifier > {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+body {
+  background-color: #ffd23f;
+  h1 {
+    font-family: "Orbitron", sans-serif;
+    color: #0ead69;
+    text-align: center;
+  }
+  p {
+    color: #ee4266;
+    text-align: center;
+  }
+  b {
+    color: aliceblue;
+    text-align: center;
+  }
+  h2 {
+    font-weight: bold;
+    color: #0ead69;
+    text-align: center;
+    font-family: "Orbitron", sans-serif;
+  }
+  h3 {
+    color: #ee4266;
+    text-align: center;
+  }
+  #LOCKIN {
+    color: #000000;
+    text-align: center;
+    border: solid #ee4266;
+    background-color: #eb6a6a;
+  }
+  img {
+    display: block;
+    margin: auto;
+    width: 50%;
+  }
+}
