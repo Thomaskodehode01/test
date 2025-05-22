@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles2.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A little test for some javawizardry</title>
+    <style>
+      .crpg {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      img {
+        cursor: pointer;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>Snippets of music from some peak games</h1></header>
+    <main>
+      <section id="Games-evo">
+        <!-- Devil May Cry 5-->
+        <article class="crpg">
+          <p>Devil May Cry 5</p>
+          <img
+            src="./Meme images/DMC5.png"
+            alt="Click to play Bury The Light music"
+            onclick="playSnippet('dmc5-audio')"
+          />
+          <audio id="dmc5-audio">
+            <source
+              src="Songs/Bury the light but it's the perfect last chorus..mp3"
+              type="audio/mpeg"
+            />
+          </audio>
+        </article>
+
+        <!-- Disco Elysium -->
+        <article class="crpg">
+          <p>Disco Elysium</p>
+          <img
+            src="./Meme images/Disco_Elysium_Poster.jpeg"
+            alt="Click to play Disco Elysium music"
+            onclick="playSnippet('disco-audio')"
+          />
+          <audio id="disco-audio">
+            <source
+              src="Songs/Fire Escape in The Sea Montage-Disco Elysium.mp3"
+              type="audio/mpeg"
+            />
+          </audio>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      function playSnippet(audioId) {
+        // Pause all audio elements first
+        document.querySelectorAll("audio").forEach((audio) => {
+          audio.pause();
+          audio.currentTime = 0;
+        });
+
+        const audio = document.getElementById(audioId);
+        audio.currentTime = 1; // Start point
+        audio.volume = 0.3;
+        audio.play();
+        setTimeout(() => {
+          const fade = setInterval(() => {
+            if (audio.volume > 0.01) {
+              audio.volume -= 0.01;
+            } else {
+              audio.pause();
+              clearInterval(fade);
+              audio.volume = 0.3; // Reset for next play
+            }
+          }, 50);
+        }, 60000);
+      }
+    </script>
+  </body>
+</html>
