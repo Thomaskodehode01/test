@@ -1,16 +1,55 @@
+ {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: black;
+  background-color: #060202;
+  font-family: sans-serif;
+  color: #dfd6d6;
 }
-h1 {
-  color: aliceblue;
+
+/* Header */
+header {
   text-align: center;
+  padding: 30px;
 }
-p {
-  color: aliceblue;
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Each game card */
+.crpg {
+  background-color: #fff;
+  padding: 10px;
   text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-img {
-  display: block;
-  margin: auto;
-  width: 50%;
+
+/* Game images */
+.crpg img {
+  width: 100%;
+  max-width: 100px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.crpg img:hover {
+  transform: scale(1.05);
+}
+
+/* Optional label */
+.crpg p {
+  font-size: 0.8rem;
+  margin-top: 8px;
 }

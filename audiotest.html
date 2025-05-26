@@ -4,68 +4,110 @@
     <link rel="stylesheet" href="styles2.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A little test for some javawizardry</title>
+    <title>Small Game Grid</title>
     <style>
-      .crpg {
-        text-align: center;
-        margin-bottom: 30px;
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: #f5f5f5;
       }
-      img {
+
+      header {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .crpg {
+        background-color: #fff;
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .crpg img {
+        width: 100%;
+        max-width: 100px;
+        border-radius: 6px;
         cursor: pointer;
-        width: 300px;
+        transition: transform 0.2s ease;
+      }
+
+      .crpg img:hover {
+        transform: scale(1.05);
+      }
+
+      .crpg p {
+        font-size: 0.8rem;
+        margin-top: 6px;
       }
     </style>
   </head>
   <body>
-    <header><h1>Snippets of music from some peak games</h1></header>
-    <main>
-      <section id="Games-evo">
-        <!-- Devil May Cry 5-->
-        <article class="crpg">
-          <p>Devil May Cry 5</p>
-          <img
-            src="./Meme images/DMC5.png"
-            alt="Click to play Bury The Light music"
-            onclick="playSnippet('dmc5-audio')"
-          />
-          <audio id="dmc5-audio">
-            <source
-              src="Songs/Bury the light but it's the perfect last chorus..mp3"
-              type="audio/mpeg"
-            />
-          </audio>
-        </article>
+    <header>
+      <h1>Game Logo Music Grid</h1>
+    </header>
 
-        <!-- Disco Elysium -->
-        <article class="crpg">
-          <p>Disco Elysium</p>
-          <img
-            src="./Meme images/Disco_Elysium_Poster.jpeg"
-            alt="Click to play Disco Elysium music"
-            onclick="playSnippet('disco-audio')"
-          />
-          <audio id="disco-audio">
-            <source
-              src="Songs/Fire Escape in The Sea Montage-Disco Elysium.mp3"
-              type="audio/mpeg"
-            />
-          </audio>
-        </article>
-      </section>
-    </main>
+    <section class="grid">
+      <article class="crpg">
+        <img
+          src="./Meme images/DMC5.png"
+          alt="DMC5"
+          onclick="playSnippet('dmc5-audio')"
+        />
+        <p>DMC5</p>
+        <audio
+          id="dmc5-audio"
+          src="Songs/Bury the light but it's the perfect last chorus..mp3"
+        ></audio>
+      </article>
+
+      <article class="crpg">
+        <img
+          src="./Meme images/Discoelysium.webp"
+          alt="Disco Elysium"
+          onclick="playSnippet('disco-audio')"
+        />
+        <p>Disco</p>
+        <audio
+          id="disco-audio"
+          src="Songs/Fire Escape in The Sea Montage-Disco Elysium.mp3"
+        ></audio>
+      </article>
+
+      <article class="crpg">
+        <img
+          src="./Meme images/RogueTrader.png"
+          alt="Rogue Trader"
+          onclick="playSnippet('rogue-audio')"
+        />
+        <p>Rogue Trader</p>
+        <audio id="rogue-audio" src="Songs/Rogue.mp3"></audio>
+      </article>
+    </section>
 
     <script>
-      function playSnippet(audioId) {
-        // Pause all audio elements first
+      function playSnippet(id) {
         document.querySelectorAll("audio").forEach((audio) => {
           audio.pause();
           audio.currentTime = 0;
         });
 
-        const audio = document.getElementById(audioId);
-        audio.currentTime = 1; // Start point
+        const audio = document.getElementById(id);
+        audio.currentTime = 10;
         audio.volume = 0.3;
         audio.play();
+
         setTimeout(() => {
           const fade = setInterval(() => {
             if (audio.volume > 0.01) {
@@ -73,11 +115,12 @@
             } else {
               audio.pause();
               clearInterval(fade);
-              audio.volume = 0.3; // Reset for next play
+              audio.volume = 0.3;
             }
           }, 50);
         }, 60000);
       }
     </script>
+    <a href="index.html">go back</a>
   </body>
 </html>
